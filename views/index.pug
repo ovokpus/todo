@@ -1,7 +1,18 @@
 extends layout
 
 block content
-  h1= title
-  p Welcome to #{title}
-
-  <h1>Hello</h1>
+  .row.justify-content-center
+    .col-6
+      div(id='todo-error' class='alert alert-danger invisible' role='alert')
+      form(class="form-row mb-2" method="POST")
+        .col-9
+          label(for="todo-item" class="sr-only") Todo Item
+          input(class="form-control" type="text" id="todo-item" placeholder="Todo item" name="item")
+        .col-3
+          input(type="submit" class="btn btn-primary" value="Add Item")
+          
+      ul(id="todo-list" class="list-unstyled")
+        each item in items
+          li= item.description
+        else
+          li No todo items
