@@ -25,6 +25,7 @@ var data = [
             { description: 'Go to School' },
             { description: 'Wash hair' },
             { description: 'Brush teeth' },
+            { description: 'Wash Face' },
             { description: 'Finish Project' },
             { description: 'Start Project' }
         ]
