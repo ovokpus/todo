@@ -25,8 +25,4 @@ router.get('/about', function(req, res, next) {
   res.render('about', {title: 'Todo About'});
 });
 
-router.get('/users', function(req, res, next) {
-  res.render('users', {title: 'Todo Users'});
-});
-
 module.exports = router;
