@@ -7,7 +7,17 @@ block content
       form(class="form-row mb-2" method="POST")
         .col-9
           label(for="todo-item" class="sr-only") Todo Item
-          input(class="form-control" type="text" id="todo-item" placeholder="Todo item" name="item")
+          input.form-control(
+            class=errors.description ? 'is-invalid' : '' 
+            type="text" 
+            id="todo-item" 
+            placeholder="Todo item" 
+            name='description'
+
+            value=item.description
+          )
+          if errors.description
+            #todo-itemInput.invalid-feedback= errors.description.message
         .col-3
           input(type="submit" class="btn btn-primary" value="Add Item")
           
