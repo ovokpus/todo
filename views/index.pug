@@ -4,24 +4,25 @@ block content
   .row.justify-content-center
     .col-6
       div(id='todo-error' class='alert alert-danger invisible' role='alert')
-      form(class="form-row mb-2" method="POST")
+      form(class='form-row mb-2' method='POST')
         .col-9
-          label(for="todo-item" class="sr-only") Todo Item
+          label(for='todo-item' class='sr-only') Todo Item
           input.form-control(
-            class=errors.description ? 'is-invalid' : '' 
-            type="text" 
-            id="todo-item" 
-            placeholder="Todo item" 
+            class=errors.description ? 'is-invalid' : ''
+            type='text'
+            id='todo-item'
+            placeholder='Todo Item'
             name='description'
-
             value=item.description
           )
+
           if errors.description
             #todo-itemInput.invalid-feedback= errors.description.message
+
         .col-3
-          input(type="submit" class="btn btn-primary" value="Add Item")
-          
-      ul(id="todo-list" class="list-unstyled")
+          input(type='submit' class='btn btn-primary' value='Add Item')
+
+      ul(id='todo-list' class='list-unstyled')
         each item in items
           li= item.description
         else

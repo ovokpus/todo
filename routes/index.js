@@ -1,15 +1,14 @@
 var express = require('express');
-const Item = require('../models/items');
 var router = express.Router();
 
-var item = require("../models/items")
+var Item = require('../models/items');
 
 /* GET home page. */
 router.get('/', function (req, res, next) {
-  item.find(function (err, items) {
+  Item.find(function (err, items) {
     if (err) console.log(err)
 
-    res.render('index', { title: 'Todo', items: items });
+    res.render('index', { title: 'Todo', errors: {}, item: [], items: items });
   });
 
 });
@@ -21,11 +20,13 @@ router.post('/', function (req, res, next) {
     description: description
   });
 
-  item.save(function(err) {
+  item.save(function (err) {
     if (err) {
-      res.render('index', {title: 'Todo', errors: err.errors, item: [], items: []});
+      Item.find({}).exec().then((items) => {
+        res.render('index', { title: 'Todo', errors: err.errors, item: item, items: items });
+      })
     } else {
-      res.redirect('/');
+      res.redirect('/')
     }
   });
 
@@ -34,4 +35,5 @@ router.post('/', function (req, res, next) {
 router.get('/about', function (req, res, next) {
   res.render('about', { title: 'Todo About' });
 });
+
 module.exports = router;
